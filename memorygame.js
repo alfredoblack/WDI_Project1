@@ -25,6 +25,9 @@ function listenForMove(){
       $(squares[currentPosition]).addClass('player');
       console.log("square", currentPosition);
     } 
+
+
+
 //  MOVE RIGHT
     else if (e.which === 39){
       currentPosition += 1;
@@ -34,7 +37,7 @@ function listenForMove(){
     } 
 // MOVE LEFT
     else if (e.which === 37){
-      currentPosition += -1;
+      currentPosition -= 1;
       $(squares).removeClass('player');
       $(squares[currentPosition]).addClass('player');
       console.log("square", currentPosition);
@@ -44,7 +47,7 @@ function listenForMove(){
 // MOVE UP key code ==38 - can not set condition for moving up when starting from 0
 
     else if (e.which === 38){
-      currentPosition += -1;
+      currentPosition += -5;
       $(squares).removeClass('player');
       $(squares[currentPosition]).addClass('player');
       console.log("square", currentPosition);
