@@ -1,12 +1,26 @@
+body{
+  background-image: url("Black_background-2.jpg");
+  font-family: 'Henny Penny', cursive;
+  color: white;
+
+}
+
+
 .header {
   margin: 10px auto;
-  padding: 0 220px;
+  padding: 70px 120px;
   border: 1px solid black;
 }
 
 h1{
   margin: auto;
   text-align: center;
+  /*font-family: 'Droid Sans Mono';*/
+  font-family: 'Henny Penny', cursive;
+  color: white;
+  font-size: 50px;
+
+
   border: 1px solid black;
 }
 
@@ -48,6 +62,10 @@ ul {
 
 .player {
   background: green;
+}
+
+.win{
+  background: pink;
 }
 
 

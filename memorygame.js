@@ -1,106 +1,83 @@
 // $(document).ready(function(){
   // })
 
-//   $('h1').on('click', function(){
-//     alert("you clicked me!");
-//   })
+
 
 var squares = $('li');
+
 squares.first().addClass('player');
 var currentPosition = 0;
-// var gameOver = false;
+var youWin = false;
+
+// var score = $('h2');
+
 
 //SETS PLAYER ON STARTING SQUARE
 if(squares.first().addClass('neutral player'));
 
-// var $mines = $('.bomb');
-// var $neutral = $('.neutral');
 
-
-// LIST OF INDEX AND VALUE OF EVERY SQUARE
-
-// function game(){
-
-//   $.each(squares, function(index, value){
-//     // console.log(index, value);
-//     var squarePlaces =[index,value];
-//     console.log(squarePlaces);
-//      })
-// }
-// game();
-
-
-//TRACK PLAYER MOVE
-
-// $.each(squares, function(value){
-//   console.log([value]);
-// })
-
-// var firstMove = 0;
-// function playerMove(){
-
-
-// }
 
 
 function listenForMove(){
-
-  // $.each(squares, function(index, value){
-  //   // console.log(index, value);
-  //   var squarePlaces =[index,value];
-  //   // console.log(squarePlaces);
-  //    })
-
 
 
   $('body').on('keydown', function(e){
     // e.preventDefault();
 
 
-    //on keydown DOWN
-    if(e.which === 40){
-      currentPosition += 5;
-/// push index to new array
-$(squares).removeClass('player');
-$(squares[currentPosition]).addClass('player');
-checkForCollision();
+      //on keydown DOWN
+      if(e.which === 40){
+        currentPosition += 5;
+    
+      $(squares).removeClass('player');
+      $(squares[currentPosition]).addClass('player');
+      checkForCollision();
+      checkForWin();
 
-console.log("square", currentPosition);
 
-} 
+      console.log("square", currentPosition);
 
-//  MOVE RIGHT
-else if (e.which === 39){
-  currentPosition += 1;
-  $(squares).removeClass('player');
-  $(squares[currentPosition]).addClass('player');
-  checkForCollision();
+      } 
 
-  console.log("square", currentPosition);
-} 
-// MOVE LEFT
-else if (e.which === 37){
-  currentPosition -= 1;
-  $(squares).removeClass('player');
-  $(squares[currentPosition]).addClass('player');
-  checkForCollision();
+      //  MOVE RIGHT
+      else if (e.which === 39){
+        currentPosition += 1;
+        $(squares).removeClass('player');
+        $(squares[currentPosition]).addClass('player');
+        checkForCollision();
+        checkForWin();
+        
 
-  console.log("square", currentPosition);
-}
+        console.log("square", currentPosition);
+      } 
+      // MOVE LEFT
+      else if (e.which === 37){
+        currentPosition -= 1;
+        $(squares).removeClass('player');
+        $(squares[currentPosition]).addClass('player');
+        checkForCollision();
+        checkForWin();
 
-// MOVE UP 
+        console.log("square", currentPosition);
+      }
 
-else if (e.which === 38){
-  currentPosition += -5;
-  $(squares).removeClass('player');
-  $(squares[currentPosition]).addClass('player');
-  checkForCollision();
+      // MOVE UP 
 
-  console.log("square", currentPosition);
+      else if (e.which === 38){
+        currentPosition += -5;
+        $(squares).removeClass('player');
+        $(squares[currentPosition]).addClass('player');
+        checkForCollision();
+        checkForWin();
 
-}
+        console.log("square", currentPosition);
 
-})
+      }
+
+      })
+
+
+  
 
 }
 
@@ -109,7 +86,15 @@ function checkForCollision(){
   if ($(squares[currentPosition]).hasClass('bomb')) {
     console.log("It's a bomb!");
     $(squares).removeClass('player');
+    setTimeout(resetBoard, 1000);
+  }
+}
+
+function checkForWin(){
+  if($(squares[currentPosition]).hasClass('win')){
+    //ADD POINTS TO SCORE
     setTimeout(resetBoard, 2000);
+    console.log("you win!");
   }
 }
 
@@ -119,37 +104,61 @@ listenForMove();
 function resetBoard(){
   squares.first().addClass('player');
   currentPosition = 0;
+  youWin = true;
   // gameOver = true;
   //SETS PLAYER ON STARTING SQUARE
   // if(squares.first().addClass('neutral player'))
 }
 
 
+// function gameOver(){
+  
+
+// return console.log('gameover!');
+// }
+
+// function score(){
+//   var total = 0;
+
+//   total = total + 1
+
+//   if($(squares[currentPosition]).hasClass('win')){
+//     //add points to score 
+//   }
+// }
+
+
 
 $('#start').on('click', function(){
-  // var count = 10;
-  // var score = 120;
-  // var counter = setInterval(timer, 1000); //1000 will  run it every 1 second
+  var count = 15;
+  var score = 120;
+  var counter = setInterval(timer, 1000); //1000 will  run it every 1 second
 
-  //   function timer() {
-  //     count = count - 1;
-  //     score = score - 2;
-  //     if (count === -1 || gameOver === true ) {
-  //       clearInterval(counter);
-  //       count = 20;
-  //       score = 120;
-  //       // gameOver();
-  //       return;
-  //     }
+    
+    function timer() {
+      count = count - 1;
+      score = score - 20;
+      if (count === -1 || youWin === true) {
+        
+        clearInterval(counter);
+        // count = 20;
+        // score = 120;
+        // gameOver();
+        youWin = true;
+        return score;
+      }
 
-  //     var seconds = count % 60;
-  //     var minutes = Math.floor(count / 60);
-  //     var hours = Math.floor(minutes / 60);
-  //     minutes %= 60;
-  //     hours %= 60;
+      var seconds = count % 60;
+      var minutes = Math.floor(count / 60);
+      var hours = Math.floor(minutes / 60);
+      minutes %= 60;
+      // hours %= 60;
 
-  //       document.getElementById("timer").innerHTML = seconds + " seconds left! " + score + " points remaining"; // watch for spelling
-  //     }
+        document.getElementById("timer").innerHTML = seconds + " seconds left! " + score + " points remaining"; // watch for spelling
+        console.log(score);
+
+        $('#score').html(score);
+      }
 
     });
 

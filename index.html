@@ -5,15 +5,18 @@
   <title>Memory Game</title>
   <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script> 
  
-<link rel="stylesheet" type="text/css" href="style.css">   
+  <link href='https://fonts.googleapis.com/css?family=Henny+Penny' rel='stylesheet' type='text/css'>
+ 
+ <link href='https://fonts.googleapis.com/css?family=Droid+Sans+Mono' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" type="text/css" href="style.css">   
 </head>
 <body>
 
 <div class= "header">
-<h1>The coolest Game ever</h1>
+<h1>Mr. McGonagal's Magical Mystery Memory Game</h1>
 </div>
 
-<h2>Score</h2>
+<h2>Score<div id="score">0</div></h2>
 <h4 id="timer"></h4>
 <button id="start">Start Game</button>
 
@@ -47,7 +50,7 @@
     <li class= "neutral"></li>
     <li class= "neutral"></li>
     <li class= "neutral"></li>
-    <li class= "neutral"></li>
+    <li class= "win"></li>
  </ul>   
    
   </div>
