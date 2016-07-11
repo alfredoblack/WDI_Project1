@@ -16,10 +16,7 @@ var youWin = false;
 if(squares.first().addClass('neutral player'));
 
 
-
-
 function listenForMove(){
-
 
   $('body').on('keydown', function(e){
     // e.preventDefault();
@@ -76,9 +73,6 @@ function listenForMove(){
 
       })
 
-
-  
-
 }
 
 
@@ -86,14 +80,15 @@ function checkForCollision(){
   if ($(squares[currentPosition]).hasClass('bomb')) {
     console.log("It's a bomb!");
     $(squares).removeClass('player');
-    setTimeout(resetBoard, 1000);
+    setTimeout(resetBoard, 2000);
+    alert("Boom! you lost");
   }
 }
 
 function checkForWin(){
   if($(squares[currentPosition]).hasClass('win')){
     //ADD POINTS TO SCORE
-    setTimeout(resetBoard, 2000);
+    setTimeout(resetBoard, 1000);
     console.log("you win!");
   }
 }
@@ -104,7 +99,14 @@ listenForMove();
 function resetBoard(){
   squares.first().addClass('player');
   currentPosition = 0;
-  youWin = true;
+  // if collision youWin == false, if not true
+    if(checkForCollision === true){
+      youWin = false;
+    }
+    else{
+      youWin = true;
+    }
+  
   // gameOver = true;
   //SETS PLAYER ON STARTING SQUARE
   // if(squares.first().addClass('neutral player'))
@@ -131,13 +133,13 @@ function resetBoard(){
 
 $('#start').on('click', function(){
   var count = 15;
-  var score = 120;
+  var score = 150;
   var counter = setInterval(timer, 1000); //1000 will  run it every 1 second
 
     
     function timer() {
       count = count - 1;
-      score = score - 20;
+      score = score - 10;
       if (count === -1 || youWin === true) {
         
         clearInterval(counter);
@@ -152,7 +154,7 @@ $('#start').on('click', function(){
       var minutes = Math.floor(count / 60);
       var hours = Math.floor(minutes / 60);
       minutes %= 60;
-      // hours %= 60;
+      
 
         document.getElementById("timer").innerHTML = seconds + " seconds left! " + score + " points remaining"; // watch for spelling
         console.log(score);

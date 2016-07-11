@@ -6,26 +6,36 @@
   <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script> 
  
   <link href='https://fonts.googleapis.com/css?family=Henny+Penny' rel='stylesheet' type='text/css'>
- 
+
  <link href='https://fonts.googleapis.com/css?family=Droid+Sans+Mono' rel='stylesheet' type='text/css'>
   <link rel="stylesheet" type="text/css" href="style.css">   
 </head>
 <body>
 
 <div class= "header">
-<h1>Mr. McGonagal's Magical Mystery Memory Game</h1>
+<h1>Mrs. McGillicuddy's Magical Mystery Memory Game</h1>
 </div>
 
 <h2>Score<div id="score">0</div></h2>
+
+
 <h4 id="timer"></h4>
-<button id="start">Start Game</button>
+
+<div id="containerInst">
+<h5>Game Instructions</h5>
+
+<p>Using the arrow keys get from start to finish within the timer</p>
+
+</div>
+
+
 
 
 <div class="outerBox">
 
   <div class="container">
 
-<ul>
+  <ul>
     <li class= "neutral"></li>
     <li class= "neutral"></li>
     <li class= "neutral"></li>
@@ -55,8 +65,9 @@
    
   </div>
 </div>
-
-
+<div class="buttonbox">
+<button id="start">Start Game</button>
+</div>
 
 <script type="text/javascript" src="memorygame.js"></script>
 </body>
