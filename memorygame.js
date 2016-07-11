@@ -8,6 +8,7 @@ var squares = $('li');
 squares.first().addClass('player');
 var currentPosition = 0;
 var youWin = false;
+var width = 5;
 
 // var score = $('h2');
 
@@ -19,17 +20,23 @@ if(squares.first().addClass('neutral player'));
 function listenForMove(){
 
   $('body').on('keydown', function(e){
-    // e.preventDefault();
+    e.preventDefault();
 
+    var previousPosition = currentPosition;
 
       //on keydown DOWN
       if(e.which === 40){
-        currentPosition += 5;
-    
-      $(squares).removeClass('player');
-      $(squares[currentPosition]).addClass('player');
-      checkForCollision();
-      checkForWin();
+        currentPosition += width;
+          
+          if(currentPosition > width * width - 1 ){
+            console.log("You can't move down!");
+            currentPosition = previousPosition;
+          }
+
+        $(squares).removeClass('player');
+        $(squares[currentPosition]).addClass('player');
+        checkForCollision();
+        checkForWin();
 
 
       console.log("square", currentPosition);
@@ -39,6 +46,12 @@ function listenForMove(){
       //  MOVE RIGHT
       else if (e.which === 39){
         currentPosition += 1;
+
+          if(previousPosition % width === width -1 && currentPosition % width === 0){
+            console.log("cant move right")
+            currentPosition = previousPosition;
+          }
+
         $(squares).removeClass('player');
         $(squares[currentPosition]).addClass('player');
         checkForCollision();
@@ -50,6 +63,12 @@ function listenForMove(){
       // MOVE LEFT
       else if (e.which === 37){
         currentPosition -= 1;
+
+          if((currentPosition % width === width -1 && previousPosition % width === 0) || currentPosition < 0){
+            console.log("cant move right")
+            currentPosition = previousPosition;
+          }
+
         $(squares).removeClass('player');
         $(squares[currentPosition]).addClass('player');
         checkForCollision();
@@ -61,7 +80,13 @@ function listenForMove(){
       // MOVE UP 
 
       else if (e.which === 38){
-        currentPosition += -5;
+        currentPosition += -width;
+
+          if(currentPosition < 0 ){
+            console.log("You can't move up!");
+            currentPosition = previousPosition;
+          }
+
         $(squares).removeClass('player');
         $(squares[currentPosition]).addClass('player');
         checkForCollision();
@@ -88,12 +113,18 @@ function checkForCollision(){
 function checkForWin(){
   if($(squares[currentPosition]).hasClass('win')){
     //ADD POINTS TO SCORE
+    youWin = true;
+    // VAR NEW ARRAY WHERE SCORE IS PUSHED
+    score.text.scoreKeeping.push()
     setTimeout(resetBoard, 1000);
     console.log("you win!");
   }
+
+
 }
 
 listenForMove();
+
 
 
 function resetBoard(){
@@ -113,6 +144,10 @@ function resetBoard(){
 }
 
 
+// function game(){
+//   $('li').each
+// }
+
 // function gameOver(){
   
 
@@ -129,6 +164,17 @@ function resetBoard(){
 //   }
 // }
 
+// function turnImages(){
+
+//   $('#start').on(click, function()){
+//     $('bomb').hide();
+//   }
+//   //on click dissolve cover image in 3 seconds
+//   // turn on bombs for 2 seconds
+//   //turn off bombs
+//   // activate timer
+// }
+
 
 
 $('#start').on('click', function(){
@@ -136,6 +182,7 @@ $('#start').on('click', function(){
   var score = 150;
   var counter = setInterval(timer, 1000); //1000 will  run it every 1 second
 
+    // $('bomb').hide();
     
     function timer() {
       count = count - 1;
@@ -152,7 +199,6 @@ $('#start').on('click', function(){
 
       var seconds = count % 60;
       var minutes = Math.floor(count / 60);
-      var hours = Math.floor(minutes / 60);
       minutes %= 60;
       
 
@@ -160,7 +206,17 @@ $('#start').on('click', function(){
         console.log(score);
 
         $('#score').html(score);
+        var scoreKeeping = []; 
+
       }
+
+
+
+      // function forBombs(){
+      //   var countB = 10;
+      //   setInterval(timer, 1000);
+
+      // }
 
     });
 
