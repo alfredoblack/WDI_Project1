@@ -217,15 +217,19 @@ function changeTheLevel(){
 
 }
 
+// $post.toggleClass("display");
+// }, 4000);
 
+
+// setTimeout('bomb', 'neutral');
 
 function timer() {
   console.log("timer function called");
   count = count - 1;
   score = score - 10;
-  if (count === -1 || youWin === true) {
+  if (count === 0 || youWin === true) {
     
-    // clearInterval(counter);
+    clearInterval(counter);
    
     youWin = true;
     totalScore += score;
