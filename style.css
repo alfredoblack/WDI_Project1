@@ -1,5 +1,6 @@
 body{
   background-image: url("Black_background-2.jpg");
+  background-size: cover;
   font-family: 'Henny Penny', cursive;
   color: white;
 
@@ -54,15 +55,30 @@ p{
 }
 
 .outerBox{
-  margin: 10px 250px 10px 0;
+  margin: 10px 110px 10px 0;
   padding: 0 11px;
   background-image: url("mrmcgonal.jpg");
+  background-repeat: no-repeat;
   border: 1px solid yellow;
   display: inline-block;
   float: right;
   z-index: 9999;
   position: relative;
+  width: 500px;
 }
+
+/*.winner{
+  margin: 10px 150px 10px 0;
+  padding: 0 11px;
+  width: 600px;
+  background-image: url("Rainbow_Colorful_wood_background.jpg");
+  background-repeat: no-repeat;
+  border: 1px solid yellow;
+  display: inline-block;
+  float: right;
+  z-index: 9999;
+  position: relative;
+}*/
 
 ul {
 
@@ -93,12 +109,12 @@ ul {
 }
 
 
-.neutral {
-  background: lightblue;
-}
-
 .bomb{
   background: orange;
+}
+
+.neutral {
+  background: lightblue;
 }
 
 .player {

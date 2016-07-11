@@ -11,12 +11,12 @@ var totalScore = 0;
 var level = 0;
 var levelMaps = [
   {
-    player: 0,
+    player: 10,
     bomb1: 5,
-    bomb2: 6,
-    bomb3: 13,
-    bomb4: 18,
-    win: 24
+    bomb2: 17,
+    bomb3: 12,
+    bomb4: 8,
+    win: 19
   },
   {
     player: 3,
@@ -25,9 +25,26 @@ var levelMaps = [
     bomb3: 15,
     bomb4: 19,
     win: 21
+  },
+  {
+    player: 0,
+    bomb1: 5,
+    bomb2: 6,
+    bomb3: 13,
+    bomb4: 18,
+    win: 24
   }
-]
+];
 
+var score = 150;
+var counter = null;
+var count = 15;
+
+
+
+$('li').hide();
+// $('div').hide();
+$('#reset').hide();
 
 //SETS PLAYER ON STARTING SQUARE
 // if(squares.first().addClass('neutral player'));
@@ -116,11 +133,17 @@ $('body').on('keydown', function(e){
 
 function checkForCollision(){
   if ($(squares[currentPosition]).hasClass('bomb')) {
+    youWin = false;
     console.log("It's a bomb!");
-    $(squares).removeClass('player');
-    // setTimeout(resetBoard, 2000);
+    // $(squares).removeClass('player');
+    $('li').removeClass("bomb player win");
+   
     alert("Boom! you lost");
+    gameOver();
+
+   return; 
   }
+
 }
 
 function checkForWin(){
@@ -134,6 +157,12 @@ function checkForWin(){
 
     if(!levelMaps[level]) {
       console.log("game Over!");
+      clearTimeout(counter);
+      $('div').hide()
+      $('li').hide()
+      $('body').css("background","url(Rainbow_Colorful_wood_background.jpg) no-repeat");
+      $('#reset').show();
+
       return;
     }
 
@@ -147,58 +176,94 @@ function checkForWin(){
 
 $('#start').on('click', changeTheLevel);
 
+$('#reset').on('click', function(){
+  location.reload();
+
+})
 
 function changeTheLevel(){
+
+  $('li').show(2000);
+
+  // if($('li').hasClass('neutral bomb')=== false){
+  // //   console.log("hello you got there!")
+  // //   setTimeout($('li').removeClass('bomb'), 1000)
+  // }
+
+
+  // {
+  //   $('.neutral.bomb').removeClass();
+  //   //$('.bomb').removeClass();
+  //   // $('li').addClass('neutral');
+
+  //   console.log('change class bomb neutral!!!')
+  //   //change class to blue
+  // }
+
+  setTimeout(function(){
+    $('li.bomb').addClass('neutral');
+  },3000);
+  
   currentPosition = levelMaps[level].player;
   $('li').eq(currentPosition).addClass("player");
-  $('li').eq(levelMaps[level].bomb1).addClass("bomb");
-  $('li').eq(levelMaps[level].bomb2).addClass("bomb");
-  $('li').eq(levelMaps[level].bomb3).addClass("bomb");
-  $('li').eq(levelMaps[level].bomb4).addClass("bomb");
+  $('li').eq(levelMaps[level].bomb1).attr("class","bomb");
+  $('li').eq(levelMaps[level].bomb2).attr("class","bomb");
+  $('li').eq(levelMaps[level].bomb3).attr("class","bomb");
+  $('li').eq(levelMaps[level].bomb4).attr("class","bomb");
   $('li').eq(levelMaps[level].win).addClass("win");
   youWin = false;
+  score = 150;
   startTheClock();
+
 }
 
+
+
+function timer() {
+  console.log("timer function called");
+  count = count - 1;
+  score = score - 10;
+  if (count === -1 || youWin === true) {
+    
+    // clearInterval(counter);
+   
+    youWin = true;
+    totalScore += score;
+  }
+
+  var seconds = count % 60;
+  var minutes = Math.floor(count / 60);
+  minutes %= 60;
+  
+
+  $("#timer").html(seconds + " seconds left! " + score + " points remaining"); // watch for spelling
+  console.log(score);
+
+  $('#score').html(totalScore);
+
+}
 
 function startTheClock(){
-  var count = 15;
+  count = 15;
+  clearInterval(counter);
   counter = setInterval(timer, 1000); //1000 will  run it every 1 second
-  var score = 120;
-    
-    
-  function timer() {
-    count = count - 1;
-    score = score - 10;
-    if (count === -1 || youWin === true) {
-      
-      clearInterval(counter);
-     
-      youWin = true;
-      totalScore += score;
-    }
-
-    var seconds = count % 60;
-    var minutes = Math.floor(count / 60);
-    minutes %= 60;
-    
-
-    $("#timer").html(seconds + " seconds left! " + score + " points remaining"); // watch for spelling
-    console.log(score);
-
-    $('#score').html(totalScore);
-
-  }
 }
 
 
-function resetTimer(){
-  if(checkForCollision ===true){
+// function resetTimer(){
+//   if(checkForCollision ===true){
 
-  }
-  setInterval(timer, 3000)
-  startTheClock();
+//   }
+//   setInterval(timer, 3000)
+//   startTheClock();
+// }
+
+
+function gameOver(){
+  $("#timer").html = "Game Over";
+  clearTimeout(counter)
 }
+
  
 
 
