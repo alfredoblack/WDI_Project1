@@ -137,8 +137,10 @@ function checkForCollision(){
     console.log("It's a bomb!");
     // $(squares).removeClass('player');
     $('li').removeClass("bomb player win");
-   
+    $('li').addClass("neutral");
     alert("Boom! you lost");
+    $('li').hide();
+    $('#containerInst').text('Sorry you lost!!');
     gameOver();
 
    return; 
@@ -153,6 +155,7 @@ function checkForWin(){
     // setTimeout(resetBoard, 1000);
     console.log("you win!");
     $('li').removeClass("player bomb win");
+    $('li').addClass("neutral");
     level++;
 
     if(!levelMaps[level]) {
@@ -161,6 +164,7 @@ function checkForWin(){
       $('div').hide()
       $('li').hide()
       $('body').css("background","url(Rainbow_Colorful_wood_background.jpg) no-repeat");
+      $('body').append("<div id='win-box'><h1>Congrats!</h1></div>");
       $('#reset').show();
 
       return;
@@ -182,9 +186,11 @@ $('#reset').on('click', function(){
 })
 
 function changeTheLevel(){
-
+  level = 0;
+  // $('#containerInst').text('<h5>Game Instructions</h5><p>Using the arrow keys get from start to finish within the timer</p>');
   $('li').show(2000);
-
+  $('#containerInst').html('<h5>Game Instructions</h5>'+
+    '<p>Using the arrow keys get from start to finish within the timer</p>');
   // if($('li').hasClass('neutral bomb')=== false){
   // //   console.log("hello you got there!")
   // //   setTimeout($('li').removeClass('bomb'), 1000)

@@ -198,6 +198,20 @@ ul {
   font-size: 20px;
 }
 
+#win-box {
+  background: red;
+  width: 200px;
+  height: 100px;
+}
+
+#lose-box {
+  background: blue;
+  width: 200px;
+  height: 100px;
+  position: absolute;
+  bottom: 50px;
+  right: 50px;
+}
 
 
 
