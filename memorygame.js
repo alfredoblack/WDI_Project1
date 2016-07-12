@@ -79,6 +79,8 @@ $('body').on('keydown', function(e){
   else if (e.which === 39){
     currentPosition += 1;
 
+  // SET BOUNDARIES TO KEEP FROM MOVING OUTSIDE THE BOX  
+
     if(previousPosition % width === width -1 && currentPosition % width === 0){
       console.log("cant move right")
       currentPosition = previousPosition;
@@ -138,9 +140,9 @@ function checkForCollision(){
     // $(squares).removeClass('player');
     $('li').removeClass("bomb player win");
     $('li').addClass("neutral");
-    alert("Boom! you lost");
+    // alert("Boom! you lost");
     $('li').hide();
-    $('#containerInst').text('Sorry you lost!!');
+    $('#containerInst').text('BOOM! you lost!!!');
     gameOver();
 
    return; 
@@ -185,6 +187,7 @@ $('#reset').on('click', function(){
 
 })
 
+
 function changeTheLevel(){
   level = 0;
   // $('#containerInst').text('<h5>Game Instructions</h5><p>Using the arrow keys get from start to finish within the timer</p>');
@@ -223,11 +226,8 @@ function changeTheLevel(){
 
 }
 
-// $post.toggleClass("display");
-// }, 4000);
 
 
-// setTimeout('bomb', 'neutral');
 
 function timer() {
   console.log("timer function called");
@@ -260,13 +260,6 @@ function startTheClock(){
 }
 
 
-// function resetTimer(){
-//   if(checkForCollision ===true){
-
-//   }
-//   setInterval(timer, 3000)
-//   startTheClock();
-// }
 
 
 function gameOver(){

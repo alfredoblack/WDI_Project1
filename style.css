@@ -10,35 +10,44 @@ body{
 .header {
   margin: 10px auto;
   padding: 70px 50px 30px;
-  border: 1px solid yellow;
 }
 
 h1{
   margin: auto;
   text-align: center;
-  /*font-family: 'Droid Sans Mono';*/
   font-family: 'Henny Penny', cursive;
   color: white;
   font-size: 50px;
 
-
-  border: 1px solid yellow;
 }
 
-h2{
+  
+
+h2 {
   float: left;
   padding: 10px 0 10px 50px;
-  margin: 0 10px;
-  display: block;
+  margin: 10px 10px;
+  display: inline-block;
   font-size: 30px;
+
 }
 
 #containerInst{
-  padding: 10px 0 10px;
+  padding: 50px 0 10px;
   width: 450px;
   display: inline-block;
-  border: 1px solid yellow;
+ /* border: 1px solid yellow;*/
   margin: 10px;
+  font-size: 30px;
+  text-align: center;
+
+}
+
+#letters{
+  width: 450px;
+  padding: 20px;
+  margin: 0 auto;
+
 }
 
 h5{
@@ -46,20 +55,26 @@ h5{
   font-size: 40px;
   display: inline-block;
   margin: 30px 5px 10px 5px;
+
 }
 
 p{
-  padding: 10px;
-  font-size: 20px;
+  padding: 5px;
+  font-size: 18px;
+  text-align: left;
   display: inline-block;
+  text-align: left;
+  margin-top: 3px;
+
 }
 
 .outerBox{
   margin: 10px 110px 10px 0;
+ /* margin: 0 auto;*/
   padding: 0 11px;
   background-image: url("mrmcgonal.jpg");
   background-repeat: no-repeat;
-  border: 1px solid yellow;
+ /* border: 1px solid yellow;*/
   display: inline-block;
   float: right;
   z-index: 9999;
@@ -84,11 +99,10 @@ ul {
 
   height: 500px;
   width:500px;
-  border: 1px solid black;
   margin: 0 auto;
   display: inline-block;
   padding: 0;
-  border: 1px solid yellow;
+ /* border: 1px solid yellow;*/
   z-index: 500;
   position: relative;
 
@@ -98,7 +112,6 @@ ul {
 .container li {
   height: 98px;
   width: 98px;
-  border: 1px solid yellow;
   padding: 0;
   margin: 0;
   float: left;
@@ -110,19 +123,21 @@ ul {
 
 
 .bomb{
-  background: orange;
+  background-image: url("landmine option.jpg")
 }
 
 .neutral {
-  background: lightblue;
+ /* background: lightblue;*/
+  background-image: url("left.jpg")
+
 }
 
 .player {
-  background: green;
+  background: rgba(234, 227, 20, 0.67);
 }
 
 .win{
-  background: pink;
+  background: rgba(20, 202, 234, 0.67);
 }
 
 #score{
@@ -153,7 +168,7 @@ ul {
   cursor:pointer;
   color:#777777;
   font-family:Arial;
-  font-size:15px;
+  font-size:25px;
   font-weight:bold;
   padding:6px 24px;
   text-decoration:none;
@@ -175,15 +190,12 @@ ul {
   top:1px;
 }
 
-/*button{
-  border: 1px solid yellow;
-}*/
 
 .buttonbox {
   padding: 10px 0 10px;
   width: 450px;
   display: inline-block;
-  border: 1px solid yellow;
+ /* border: 1px solid yellow;*/
   margin: 10px;
   background-size: 30px;
   font-size: 10px;
@@ -192,7 +204,7 @@ ul {
 }
 
 #timer{
-  border: 1px solid yellow;
+ /* border: 1px solid yellow;*/
   height: 50px;
   text-align: right;
   font-size: 20px;
@@ -212,6 +224,51 @@ ul {
   bottom: 50px;
   right: 50px;
 }
+
+#reset{
+
+  -moz-box-shadow:inset 0px 1px 0px 0px #ffffff;
+  -webkit-box-shadow:inset 0px 1px 0px 0px #ffffff;
+  box-shadow:inset 0px 1px 0px 0px #ffffff;
+  background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #ededed), color-stop(1, #dfdfdf));
+  background:-moz-linear-gradient(top, #ededed 5%, #dfdfdf 100%);
+  background:-webkit-linear-gradient(top, #ededed 5%, #dfdfdf 100%);
+  background:-o-linear-gradient(top, #ededed 5%, #dfdfdf 100%);
+  background:-ms-linear-gradient(top, #ededed 5%, #dfdfdf 100%);
+  background:linear-gradient(to bottom, #ededed 5%, #dfdfdf 100%);
+  filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#ededed', endColorstr='#dfdfdf',GradientType=0);
+  background-color:#ededed;
+  -moz-border-radius:6px;
+  -webkit-border-radius:6px;
+  border-radius:6px;
+  border:1px solid #dcdcdc;
+  display:inline-block;
+  cursor:pointer;
+  color:#777777;
+  font-family:Arial;
+  font-size:25px;
+  font-weight:bold;
+  padding:6px 24px;
+  text-decoration:none;
+  text-shadow:0px 1px 0px #ffffff;
+}
+
+#reset:hover {
+  background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #dfdfdf), color-stop(1, #ededed));
+  background:-moz-linear-gradient(top, #dfdfdf 5%, #ededed 100%);
+  background:-webkit-linear-gradient(top, #dfdfdf 5%, #ededed 100%);
+  background:-o-linear-gradient(top, #dfdfdf 5%, #ededed 100%);
+  background:-ms-linear-gradient(top, #dfdfdf 5%, #ededed 100%);
+  background:linear-gradient(to bottom, #dfdfdf 5%, #ededed 100%);
+  filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#dfdfdf', endColorstr='#ededed',GradientType=0);
+  background-color:#dfdfdf;
+}
+
+#reset:active {
+  position:relative;
+  top:1px;
+}
+
 
 
 
