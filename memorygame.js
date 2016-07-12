@@ -39,6 +39,8 @@ var levelMaps = [
 var score = 150;
 var counter = null;
 var count = 15;
+var audio = new Audio('audio/Bomb-timer.mp3');
+var endAudio = new Audio('audio/womp-womp.mp3');
 
 
 
@@ -131,6 +133,8 @@ $('body').on('keydown', function(e){
 
 });
 
+//// TRACKING FOR BOMBS
+
 
 function checkForCollision(){
   if ($(squares[currentPosition]).hasClass('bomb')) {
@@ -165,7 +169,7 @@ function checkForWin(){
       $('div').hide()
       $('li').hide()
       $('body').css("background","url(Rainbow_Colorful_wood_background.jpg) no-repeat");
-      $('body').append("<div id='win-box'><h1>Congrats!</h1></div>");
+      $('body').append("<div id='win-box'><h6>Congrats!</h6></div>");
       $('#reset').show();
 
       return;
@@ -190,7 +194,9 @@ $('#reset').on('click', function(){
 function changeTheLevel(){
   // level = 0;
   // $('#containerInst').text('<h5>Game Instructions</h5><p>Using the arrow keys get from start to finish within the timer</p>');
+  $('li').hide();
   $('li').show(2000);
+  audio.play();
   $('#containerInst').html('<h5>Game Instructions</h5>'+
     '<p>Using the arrow keys get from start to finish within the timer</p>');
   // if($('li').hasClass('neutral bomb')=== false){
@@ -211,6 +217,8 @@ function changeTheLevel(){
   setTimeout(function(){
     $('li.bomb').addClass('neutral');
   },2000);
+
+
   
   currentPosition = levelMaps[level].player;
   $('li').eq(currentPosition).addClass("player");
@@ -252,6 +260,8 @@ function timer() {
 
 }
 
+//STARTS TIMER AND COUNTER
+
 function startTheClock(){
   count = 15;
   clearInterval(counter);
@@ -261,6 +271,8 @@ function startTheClock(){
 
 function gameOver(){
   $("#timer").html = "Game Over";
+  audio.pause();
+  endAudio.play();
   clearTimeout(counter)
 }
 
