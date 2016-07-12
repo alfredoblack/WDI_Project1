@@ -18,6 +18,7 @@ h1{
   font-family: 'Henny Penny', cursive;
   color: white;
   font-size: 50px;
+  color: rgba(234, 227, 20, 0.77);
 
 }
 
@@ -55,6 +56,7 @@ h5{
   font-size: 40px;
   display: inline-block;
   margin: 30px 5px 10px 5px;
+  color: rgba(234, 227, 20, 0.77);
 
 }
 
@@ -80,20 +82,10 @@ p{
   z-index: 9999;
   position: relative;
   width: 500px;
+  border-radius: 27%;
 }
 
-/*.winner{
-  margin: 10px 150px 10px 0;
-  padding: 0 11px;
-  width: 600px;
-  background-image: url("Rainbow_Colorful_wood_background.jpg");
-  background-repeat: no-repeat;
-  border: 1px solid yellow;
-  display: inline-block;
-  float: right;
-  z-index: 9999;
-  position: relative;
-}*/
+
 
 ul {
 
@@ -138,6 +130,7 @@ ul {
 
 .win{
   background: rgba(20, 202, 234, 0.67);
+  b
 }
 
 #score{
@@ -211,9 +204,12 @@ ul {
 }
 
 #win-box {
-  background: red;
-  width: 200px;
-  height: 100px;
+  background: black;
+  width: 625px;
+  height: 483px;
+  margin: 0 auto;
+  border-radius: 27%;
+  background-image: url("yay.jpg")
 }
 
 #lose-box {

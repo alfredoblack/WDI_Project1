@@ -46,10 +46,9 @@ $('li').hide();
 // $('div').hide();
 $('#reset').hide();
 
-//SETS PLAYER ON STARTING SQUARE
-// if(squares.first().addClass('neutral player'));
 
 
+/// MAIN FUNCTION LISTENING FOR PLAYER'S MOVE
 
 $('body').on('keydown', function(e){
   e.preventDefault();
@@ -189,7 +188,7 @@ $('#reset').on('click', function(){
 
 
 function changeTheLevel(){
-  level = 0;
+  // level = 0;
   // $('#containerInst').text('<h5>Game Instructions</h5><p>Using the arrow keys get from start to finish within the timer</p>');
   $('li').show(2000);
   $('#containerInst').html('<h5>Game Instructions</h5>'+
@@ -211,7 +210,7 @@ function changeTheLevel(){
 
   setTimeout(function(){
     $('li.bomb').addClass('neutral');
-  },3000);
+  },2000);
   
   currentPosition = levelMaps[level].player;
   $('li').eq(currentPosition).addClass("player");
@@ -227,7 +226,7 @@ function changeTheLevel(){
 }
 
 
-
+/// TRACK TIME AND UPDATE SCORES
 
 function timer() {
   console.log("timer function called");
@@ -258,8 +257,6 @@ function startTheClock(){
   clearInterval(counter);
   counter = setInterval(timer, 1000); //1000 will  run it every 1 second
 }
-
-
 
 
 function gameOver(){
